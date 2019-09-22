@@ -35,8 +35,8 @@ console.log(plainText2);
 
 ### Generators
 
-- HTML generator
-- Markdown generator
+- HTML generator _(`text()` generator)_
+- Markdown generator _(`text()` generator)_
 - Number generator
 
 ### Localization
@@ -49,7 +49,7 @@ console.log(plainText2);
 
 ### Options
 
-- Questions support
+- Questions support _(`text()` generator)_
 
 ## Contribute
 
