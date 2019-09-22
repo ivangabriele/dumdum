@@ -13,6 +13,12 @@ jobs:
   include:
     - stage: Test
       name: Unit Tests
+      node_js: "10"
+      script: ./scripts/ci/run_unit_tests.sh
+
+    - stage: Test
+      name: Unit Tests
+      node_js: "12"
       script: ./scripts/ci/run_unit_tests.sh
 
     - stage: Release
