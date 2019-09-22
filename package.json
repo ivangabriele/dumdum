@@ -2,7 +2,7 @@
   "name": "dumdum",
   "version": "0.0.0",
   "license": "MIT",
-  "description": "dumdum-based API Client.",
+  "description": "Dummy data generator for local development, demos and testing purposes.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "engines": {
