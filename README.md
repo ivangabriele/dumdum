@@ -68,7 +68,7 @@ yarn test:watch
 ---
 
 [img-coveralls]: https://img.shields.io/coveralls/github/ivangabriele/dumdum/master?style=flat-square
-[img-license]: https://img.shields.io/badge/License-Apache%202.0-blue?style=flat-square
+[img-license]: https://img.shields.io/badge/License-MIT-blue?style=flat-square
 [img-npm]: https://img.shields.io/npm/v/dumdum?style=flat-square
 [img-travis]: https://img.shields.io/travis/com/ivangabriele/dumdum/master?style=flat-square
 [link-coveralls]: https://coveralls.io/github/ivangabriele/dumdum
