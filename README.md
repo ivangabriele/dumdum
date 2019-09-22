@@ -73,5 +73,5 @@ yarn test:watch
 [img-travis]: https://img.shields.io/travis/com/ivangabriele/dumdum/master?style=flat-square
 [link-coveralls]: https://coveralls.io/github/ivangabriele/dumdum
 [link-license]: https://github.com/ivangabriele/dumdum/blob/master/LICENSE
-[link-npm]: https://github.com/ivangabriele/dumdum/blob/master/LICENSE
+[link-npm]: https://www.npmjs.com/package/dumdum
 [link-travis]: https://travis-ci.com/ivangabriele/dumdum
