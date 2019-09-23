@@ -19,7 +19,7 @@ npm i -D dumdum
 import DumDum from "dumdum";
 
 const dumdum = DumDum.create({
-  locale: "en" // or "fr"
+  locale: "en"
 });
 
 // Plain text with a maxLength of 50:
@@ -51,6 +51,32 @@ console.log(plainText2);
 
 - Questions support _(`text()` generator)_
 
+## API
+
+### Options
+
+> Used with `DumDum.create([config])`
+
+```ts
+{
+  locale: "fr" | "en"; // Default to "en".
+}
+```
+
+### Methods
+
+#### `text(maxLength[, type])`
+
+- `maxLength`: Integer between 13 and 1000.
+- `type`: String. Default to `"plain"`.
+
+#### `text(interval[, type])`
+
+- `interval`: `[minLength, maxLength]`
+  - `minLength`: Integer between 12 and 999.
+  - `maxLength`: Integer between 13 and 1000.
+- `type`: String. Default to `"plain"`.
+
 ## Contribute
 
 ### Get Started
@@ -61,8 +87,14 @@ yarn
 
 ### Test
 
+- Lint Tests: `yarn test:lint`
+- Unit Tests: `yarn test:unit`
+- Unit Tests (watch): `yarn test:watch`
+
+### Generate Data
+
 ```bash
-yarn test:watch
+yarn data:generate [fr|en]...
 ```
 
 ---
