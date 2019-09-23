@@ -26,6 +26,7 @@
     "download": "7.1.0",
     "jest": "24.9.0",
     "keep-a-changelog": "0.8.1",
+    "make-dir": "3.0.0",
     "ora": "4.0.0",
     "prettier": "1.18.2",
     "ramda": "0.26.1",
