@@ -7,9 +7,8 @@
 /.vscode/settings.json
 /RELEASE_NOTES.md
 
-### Custom ###
-
-*.txt
+# Used for development purposes in order to control data generation steps:
+/.data
 
 ### Node ###
 
