@@ -1,56 +1,32 @@
 const download = require("download");
 const fs = require("fs");
+const makeDir = require("make-dir");
 const ora = require("ora");
 const R = require("ramda");
 const rimraf = require("rimraf");
+const argv = require("yargs").argv;
 
-const MIN_STRING_LENGTH = 12;
-const MAX_STRING_LENGTH = 1000;
+const META = require("../../src/meta.json");
+const LOCALES = require("./locales");
 
-const LOCALES = [
-  {
-    name: "en",
-    uri: "https://www.gutenberg.org/files/2600/2600-0.txt",
-    startValue: /^CHAPTER I/m,
-    endValue: /^End of the Project/m,
-    postNormalizer: source => source
-  },
-  {
-    name: "fr",
-    uri: "http://www.gutenberg.org/cache/epub/17949/pg17949.txt",
-    startValue: /^CHAPITRE PREMIER/m,
-    endValue: /^FIN DU PREMIER VOLUME/m,
-    postNormalizer: R.pipe(
-      R.split(/\n+/),
-      R.map(value => {
-        switch (true) {
-          case value.startsWith("--«") && value.includes("»"):
-            return value.substr(2);
-
-          case value.startsWith("--") && value.endsWith("»"):
-            return `«${value.substr(2)}`;
-
-          case value.startsWith("--") && !value.endsWith("»"):
-            return `«${value.substr(2)}»`;
-
-          case value.startsWith("«") && !value.endsWith("»"):
-            return `${value.substr(2)}»`;
-
-          default:
-            return value;
-        }
-      }),
-      R.join("\n\n"),
-      R.replace(/([^\s])(!|\?|;|:)/g, "$1 $2")
-    )
-  }
-];
+const MAX_STRING_LENGTH = META.maxTextLength;
+const MIN_STRING_LENGTH = META.minTextLength;
 
 const spinner = ora();
 
 function _extract(startValue, endValue, input) {
   const startIndex = input.search(startValue);
+  if (startIndex === -1) {
+    console.error("Error: Can't find the start index.");
+    process.exit(1);
+  }
+
   const endIndex = input.search(endValue);
+  if (endIndex === -1) {
+    console.error("Error: Can't find the end index.");
+    process.exit(1);
+  }
+
   const output = input.substring(startIndex, endIndex).trim();
 
   return output;
@@ -61,6 +37,7 @@ function _normalize(input) {
     .replace(/(\r\n|\r|\n)/g, "\n")
     .replace(/\n{3,}/g, "\n\n")
     .replace(/^(.+)\n(?!\n)/gm, "$1 ")
+    .replace(/\s+/, " ")
     .trim();
 
   return output;
@@ -74,10 +51,10 @@ function _stringify(input) {
 
 function _normalizeGutenberg(input) {
   const output = input
-    .replace(/^[A-Z0-9]\n{2}/gm, "")
-    .replace(/^[A-Z0-9].*[A-Z0-9]\n{2}/gm, "")
-    .replace(/^\s+\*.*\n{2}/gm, "")
-    .replace(/\s*\.{3,}/g, "…")
+    .replace(/^[A-Z0-9\s\.\-\*]+$/gm, "")
+    .replace(/^[ \[\*].*/gm, "")
+    .replace(/.*\*$/gm, "")
+    .replace(/ *\.{3,}/g, "…")
     .replace(/\[.*\]/g, "");
 
   return output;
@@ -126,28 +103,40 @@ const fillDataFromStrings = (input, strings) =>
 
 (async () => {
   try {
-    for (const locale of LOCALES) {
-      spinner.start(`[${locale.name}] Downloading source from ${locale.uri}…`);
-      const sourceBuffer = await download(locale.uri);
-      spinner.succeed(`[${locale.name}] Source downloaded.`);
+    if (!fs.existsSync("./.data")) await makeDir("./.data");
 
-      spinner.start(`[${locale.name}] Extracting source body…`);
-      const source = sourceBuffer.toString();
-      const sourceBody = locale.postNormalizer(
-        generateSourceBodyFromGutenberg(locale.startValue, locale.endValue, source)
-      );
-      fs.writeFileSync("test.txt", sourceBody);
-      spinner.succeed(`[${locale.name}] Source body extracted.`);
+    for (const locale of LOCALES) {
+      if (!argv._.includes(locale.name)) continue;
+
+      if (!fs.existsSync(`./.data/${locale.name}`)) await makeDir(`./.data/${locale.name}`);
+
+      const sourceBodies = [];
+      for (const { title, uri, startValue, endValue } of locale.resources) {
+        spinner.start(`[${locale.name}] Downloading "${title}" from ${uri}…`);
+        const sourceBuffer = await download(uri);
+        spinner.succeed(`[${locale.name}] "${title}" downloaded.`);
+
+        spinner.start(`[${locale.name}] Extracting source body…`);
+        const source = sourceBuffer.toString();
+        const sourceBodyRaw = generateSourceBodyFromGutenberg(startValue, endValue, source);
+        const sourceBody = locale.postNormalizer(sourceBodyRaw);
+        fs.writeFileSync(`./.data/${locale.name}/${title}.txt`, sourceBody);
+        spinner.succeed(`[${locale.name}] Source body extracted.`);
+
+        sourceBodies.push(sourceBody);
+      }
+      const sourceBody = sourceBodies.join("\n\n");
 
       spinner.start(`[${locale.name}] Generating data…`);
       const textsFilePath = `./src/data/${locale.name}/texts.json`;
       rimraf.sync(textsFilePath);
       const paragraphs = generateParagraphsFromSourceBody(sourceBody);
+      fs.writeFileSync(`./.data/${locale.name}/paragraphs.json`, stringify(paragraphs));
       const emptyData = new Array(MAX_STRING_LENGTH - MIN_STRING_LENGTH + 1);
       emptyData.fill("");
       const incompleteData = fillDataFromStrings(emptyData, paragraphs);
       const sentences = generateSentencesFromSourceBody(sourceBody);
-      fs.writeFileSync("./sentences.json", stringify(sentences));
+      fs.writeFileSync(`./.data/${locale.name}/sentences.json`, stringify(sentences));
       const data = fillDataFromStrings(incompleteData, sentences);
       fs.writeFileSync(textsFilePath, stringify(data));
       spinner.succeed(`[${locale.name}] Data generated.`);
