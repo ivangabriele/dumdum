@@ -1,0 +1,32 @@
+# https://docs.npmjs.com/misc/developers#keeping-files-out-of-your-package
+
+### Project ###
+
+/.dependabot
+/.vscode
+/coverage
+/src
+/scripts
+
+/.editorconfig
+/.travis.yml
+/jest.config.yml
+/RELEASE_NOTES.md
+/rollup.config.js
+/tsconfig.json
+/tslint.json
+
+# Used for development purposes in order to control data generation steps:
+/.data
+
+### Node ###
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
