@@ -17,7 +17,3 @@ export interface DumDumInstance {
 export interface DumDumStatic extends DumDumInstance {
   create(options?: DumDumOptions): DumDumInstance;
 }
-
-declare const DumDum: DumDumStatic;
-
-export default DumDum;
