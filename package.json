@@ -1,6 +1,6 @@
 {
   "name": "dumdum",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "license": "MIT",
   "description": "Dummy data generator for local development, demos and testing purposes.",
   "main": "./dist/index.js",
