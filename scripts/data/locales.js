@@ -95,28 +95,79 @@ module.exports = [
         endValue: /^End of Project/m
       }
     ],
-    postNormalizer: source => source
+    postNormalizer: R.pipe(
+      R.replace(/"([^"]+)"/g, "“$1”"),
+      R.replace(/ +(\.|…|\?|\!)/g, "$1")
+    )
   },
   {
     name: "fr",
     resources: [
       {
+        title: "Anna Karénine (Tome I)",
+        uri: "http://www.gutenberg.org/cache/epub/17552/pg17552.txt",
+        startValue: /^I$/m,
+        endValue: /^FIN DU PREMIER VOLUME$/m
+      },
+      {
         title: "La guerre et la paix (Tome I)",
         uri: "http://www.gutenberg.org/cache/epub/17949/pg17949.txt",
         startValue: /^CHAPITRE PREMIER/m,
-        endValue: /^FIN DU PREMIER VOLUME/m
+        endValue: /^FIN DU PREMIER VOLUME$/m
       },
       {
         title: "La guerre et la paix (Tome II)",
         startValue: /^CHAPITRE PREMIER/m,
         uri: "http://www.gutenberg.org/cache/epub/17950/pg17950.txt",
-        endValue: /^FIN DU DEUXIÈME VOLUME/m
+        endValue: /^FIN DU DEUXIÈME VOLUME$/m
       },
       {
         title: "La guerre et la paix (Tome III)",
         uri: "http://www.gutenberg.org/cache/epub/17951/pg17951.txt",
-        startValue: /^CHAPITRE PREMIER/m,
-        endValue: /^FIN/m
+        startValue: /^CHAPITRE PREMIER$/m,
+        endValue: /^FIN$/m
+      },
+      {
+        title: "L'enfance et l'adolescence",
+        uri: "https://www.gutenberg.org/files/47720/47720-0.txt",
+        startValue: /^NOTRE PRÉCEPTEUR KARL IVANOVITCH$/m,
+        endValue: /^TABLE DES MATIÈRES$/m
+      },
+      {
+        title: "Ma confession",
+        uri: "https://www.gutenberg.org/files/46447/46447-0.txt",
+        startValue: /^I$/m,
+        endValue: /^1882\.$/m
+      },
+      {
+        title: "La Pensée de l'Humanité",
+        uri: "https://www.gutenberg.org/files/43761/43761-0.txt",
+        startValue: /^CHAPITRE PREMIER$/m,
+        endValue: /^FIN$/m
+      },
+      {
+        title: "Les possédés",
+        uri: "http://www.gutenberg.org/cache/epub/16824/pg16824.txt",
+        startValue: /^Pour raconter les événements/m,
+        endValue: /^FIN$/m
+      },
+      {
+        title: "Souvenirs de la maison des morts",
+        uri: "http://www.gutenberg.org/cache/epub/14918/pg14918.txt",
+        startValue: /^Au milieu des steppes/m,
+        endValue: /^FIN$/m
+      },
+      {
+        title: "Carnet d'un inconnu",
+        uri: "http://www.gutenberg.org/cache/epub/15557/pg15557.txt",
+        startValue: /^Sa retraite prise/m,
+        endValue: /^End of the Project/m
+      },
+      {
+        title: "La fille du capitaine",
+        uri: "http://www.gutenberg.org/cache/epub/30638/pg30638.txt",
+        startValue: /^Mon père, André Pétrovitch Grineff/m,
+        endValue: /^NOTES$/m
       }
     ],
     postNormalizer: R.pipe(
@@ -140,7 +191,9 @@ module.exports = [
         }
       }),
       R.join("\n\n"),
-      R.replace(/([^\s])(!|\?|;|:)/g, "$1 $2")
+      R.replace(/"([^"]+)"/g, "«$1»"),
+      R.replace(/([^\s])(\!|\?|;|:)/g, "$1 $2"),
+      R.replace(/ +(\.|…)/g, "$1")
     )
   }
 ];
