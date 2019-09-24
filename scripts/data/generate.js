@@ -2,6 +2,7 @@ const download = require("download");
 const fs = require("fs");
 const makeDir = require("make-dir");
 const ora = require("ora");
+const proload = require("proload");
 const R = require("ramda");
 const rimraf = require("rimraf");
 const argv = require("yargs").argv;
@@ -36,8 +37,7 @@ function _normalize(input) {
   const output = input
     .replace(/(\r\n|\r|\n)/g, "\n")
     .replace(/\n{3,}/g, "\n\n")
-    .replace(/^(.+)\n(?!\n)/gm, "$1 ")
-    .replace(/\s+/, " ")
+    .replace(/ {2,}/, " ")
     .trim();
 
   return output;
@@ -51,11 +51,13 @@ function _stringify(input) {
 
 function _normalizeGutenberg(input) {
   const output = input
-    .replace(/^[A-Z0-9\s\.\-\*]+$/gm, "")
+    .replace(/^[A-Z0-9 \.\-\*_'"’]+$/gm, "")
     .replace(/^[ \[\*].*/gm, "")
     .replace(/.*\*$/gm, "")
     .replace(/ *\.{3,}/g, "…")
-    .replace(/\[.*\]/g, "");
+    .replace(/\[.*\]/g, "")
+    .replace(/_.*_/g, "")
+    .replace(/^(.+)\n(?!\n)/gm, "$1 ");
 
   return output;
 }
@@ -75,20 +77,24 @@ const generateSourceBodyFromGutenberg = R.pipe(
 
 const generateParagraphsFromSourceBody = R.pipe(
   R.split(/\n+/),
-  R.map(value => value.replace(/^(“|«)(.*)(”|»)$/, "$2")),
+  R.map(value => value.replace(/^(“|«)([^”»]+)(”|»)$/, "$2")),
+  R.map(R.trim),
   R.filter(value => value.length >= MIN_STRING_LENGTH && value.length <= MAX_STRING_LENGTH),
   R.filter(value => /(\.|…|!)$/.test(value)),
+  R.filter(value => /^[A-ZÀÁÂÃÄÆÇÈÉÊËÌÍÎÏÑÒÓÔÕÖŒÙÚÛÜ“«]/.test(value)),
   R.sort(diffByLength)
 );
 
 const generateSentencesFromSourceBody = R.pipe(
   R.replace(/\n+/g, " "),
-  R.replace(/(\.|…|!|\?)(?!”|»)\s+/g, "$1@"),
-  R.replace(/(\.|…|!|\?)\s*(”|»)/g, "$1$2@"),
+  R.replace(/(\.|…|!|\?)(?!”|») +/g, "$1@"),
+  R.replace(/(\.|…|!|\?) *(”|»)/g, "$1$2@"),
   R.split(/@/),
-  R.map(value => value.replace(/^(“|«)(.*)(”|»)$/, "$2")),
-  R.filter(value => /(\.|…|!)$/.test(value)),
-  R.filter(value => /^[A-ZÀÁÂÃÄÆÇÈÉÊËÌÍÎÏÑÒÓÔÕÖŒÙÚÛÜ]/.test(value))
+  R.map(value => value.replace(/^(“|«)(.*)([^”»]+)$/, "$2")),
+  R.map(R.trim),
+  R.filter(value => value.length >= MIN_STRING_LENGTH && value.length <= MAX_STRING_LENGTH),
+  R.filter(value => /[\.…\!]$/.test(value)),
+  R.filter(value => /^[A-ZÀÁÂÃÄÆÇÈÉÊËÌÍÎÏÑÒÓÔÕÖŒÙÚÛÜ“«]/.test(value))
 );
 
 const fillDataFromStrings = (input, strings) =>
@@ -112,9 +118,15 @@ const fillDataFromStrings = (input, strings) =>
 
       const sourceBodies = [];
       for (const { title, uri, startValue, endValue } of locale.resources) {
-        spinner.start(`[${locale.name}] Downloading "${title}" from ${uri}…`);
-        const sourceBuffer = await download(uri);
-        spinner.succeed(`[${locale.name}] "${title}" downloaded.`);
+        const proloadOptions = {
+          spinner: {
+            instance: spinner,
+            progressPrefix: `[${locale.name}] [`,
+            progressSuffix: `] Downloading "${title}" from ${uri}…`,
+            successMessage: `[${locale.name}] "${title}" downloaded.`
+          }
+        };
+        const sourceBuffer = await proload(uri, proloadOptions);
 
         spinner.start(`[${locale.name}] Extracting source body…`);
         const source = sourceBuffer.toString();
