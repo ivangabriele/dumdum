@@ -67,14 +67,14 @@ console.log(plainText2);
 
 #### `text(maxLength[, type])`
 
-- `maxLength`: Integer between 13 and 1000.
+- `maxLength`: Integer between 13 and 620.
 - `type`: String. Default to `"plain"`.
 
 #### `text(interval[, type])`
 
 - `interval`: `[minLength, maxLength]`
-  - `minLength`: Integer between 12 and 999.
-  - `maxLength`: Integer between 13 and 1000.
+  - `minLength`: Integer between 12 and 619.
+  - `maxLength`: Integer between 13 and 620.
 - `type`: String. Default to `"plain"`.
 
 ## Contribute
