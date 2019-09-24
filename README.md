@@ -18,9 +18,7 @@ npm i -D dumdum
 ```js
 import DumDum from "dumdum";
 
-const dumdum = DumDum.create({
-  locale: "en"
-});
+const dumdum = DumDum.create();
 
 // Plain text with a maxLength of 50:
 const plainText1 = dumdum.text(50);
@@ -47,9 +45,10 @@ console.log(plainText2);
 - Spanish localization
 - Russian localization
 
-### Options
+### Misc
 
 - Questions support _(`text()` generator)_
+- Increase maximum length to `1,000`.
 
 ## API
 
@@ -87,6 +86,7 @@ yarn
 
 ### Test
 
+- All Tests: `yarn test`
 - Lint Tests: `yarn test:lint`
 - Unit Tests: `yarn test:unit`
 - Unit Tests (watch): `yarn test:watch`
