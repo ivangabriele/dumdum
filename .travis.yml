@@ -12,13 +12,17 @@ stages:
 jobs:
   include:
     - stage: Test
-      name: Unit Tests
-      node_js: "10"
-      script: ./scripts/ci/run_unit_tests.sh
+      name: Unit Tests v8
+      node_js: "8"
 
     - stage: Test
-      name: Unit Tests
+      name: Unit Tests v10
+      node_js: "10"
+
+    - stage: Test
+      name: Unit Tests v12
       node_js: "12"
+      # Only report coverage within this job:
       script: ./scripts/ci/run_unit_tests.sh
 
     - stage: Release
