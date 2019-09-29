@@ -46,6 +46,11 @@
     "typescript": "3.6.3",
     "yargs": "14.0.0"
   },
+  "resolutions": {
+    "bl": ">=1.0.1",
+    "handlebars": ">=4.3.0",
+    "semver": ">=4.3.0"
+  },
   "keywords": [
     "data",
     "dummy",
