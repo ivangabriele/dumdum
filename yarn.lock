@@ -4455,6 +4455,11 @@ rorre@1.1.0:
   resolved "https://registry.yarnpkg.com/rorre/-/rorre-1.1.0.tgz#05c05931530f3ad70a35ee5cb4432e4378255d76"
   integrity sha512-DFYq30bgSdSoWjHXjSVmWfRhBXmxqECrpmxNeU0qm5JkKQ3kIF35gL4DIAGrfqs0VRckK4v9wdRq/ZDjRlwvWg==
 
+rorre@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/rorre/-/rorre-1.2.0.tgz#40c2e4959ddc8c245c6666daf5d79c57f1636f7d"
+  integrity sha512-Vo0AyYL9kZDZnJ8grSsAUm5Vj1Q3J5dJETpDfBzsTi+ggq8KuteOeMIkbLXT+Ia6t52MzVxva2hgGCOk3ej6xg==
+
 rsvp@^4.8.4:
   version "4.8.5"
   resolved "https://registry.yarnpkg.com/rsvp/-/rsvp-4.8.5.tgz#c8f155311d167f68f21e168df71ec5b083113734"
