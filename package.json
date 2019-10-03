@@ -30,7 +30,7 @@
     "proload": "1.0.0-beta.3",
     "ramda": "0.26.1",
     "rimraf": "3.0.0",
-    "rollup": "1.22.0",
+    "rollup": "1.23.0",
     "rollup-plugin-cleaner": "1.0.0",
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-json": "4.0.0",
