@@ -44,7 +44,7 @@
     "tslint-config-airbnb": "5.11.2",
     "tslint-config-prettier": "1.18.0",
     "typescript": "3.7.4",
-    "yargs": "14.2.0"
+    "yargs": "15.0.2"
   },
   "resolutions": {
     "bl": ">=1.0.1",
