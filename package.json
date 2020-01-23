@@ -48,8 +48,7 @@
   },
   "resolutions": {
     "bl": ">=1.0.1",
-    "handlebars": ">=4.3.0",
-    "semver": ">=4.3.0"
+    "handlebars": ">=4.7.1"
   },
   "keywords": [
     "data",
