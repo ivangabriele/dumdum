@@ -7,6 +7,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "rollup -c && copyfiles -f ./src/index.d.ts ./dist",
+    "build:release": "yarn build && node ./scripts/ci/build_release.js",
     "ci:generate:release_notes": "node ./scripts/ci/generate_release_notes.js",
     "data:generate": "node ./scripts/data/generate.js",
     "test": "yarn test:lint && yarn test:unit",

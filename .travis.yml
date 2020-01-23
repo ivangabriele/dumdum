@@ -29,12 +29,14 @@ jobs:
       name: Github Release
       script: skip
       before_deploy:
+        - yarn build:release
         - yarn ci:generate:release_notes
       deploy:
         provider: releases
         api_key: $GITHUB_TOKEN
         edge:
           branch: master
+        file: ./dumdum-unsigned.zip
         release_notes_file: ./RELEASE_NOTES.md
         on:
           repo: ivangabriele/dumdum
@@ -48,7 +50,7 @@ jobs:
       deploy:
         provider: npm
         access: public
-        api_token: $NPM_TOKEN
+        api_key: $NPM_TOKEN
         edge:
           branch: master
         email: ivan.gabriele@gmail.com
