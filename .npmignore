@@ -10,6 +10,7 @@
 /src
 
 /.editorconfig
+/.prettierrc
 /.travis.yml
 /jest.config.yml
 /RELEASE_NOTES.md
