@@ -12,10 +12,6 @@ stages:
 jobs:
   include:
     - stage: Test
-      name: Unit Tests v8
-      node_js: "8"
-
-    - stage: Test
       name: Unit Tests v10
       node_js: "10"
 
