@@ -24,7 +24,7 @@
     "copyfiles": "2.2.0",
     "coveralls": "3.0.9",
     "download": "7.1.0",
-    "jest": "24.9.0",
+    "jest": "25.1.0",
     "keep-a-changelog": "0.9.1",
     "make-dir": "3.0.0",
     "ora": "4.0.3",
