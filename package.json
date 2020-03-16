@@ -32,7 +32,7 @@
     "proload": "1.0.0-beta.4",
     "ramda": "0.27.0",
     "rimraf": "3.0.2",
-    "rollup": "2.0.3",
+    "rollup": "2.0.6",
     "rollup-plugin-cleaner": "1.0.0",
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-json": "4.0.0",
@@ -44,11 +44,11 @@
     "tslint-config-airbnb": "5.11.2",
     "tslint-config-prettier": "1.18.0",
     "typescript": "3.8.3",
-    "yargs": "15.3.0"
+    "yargs": "15.3.1"
   },
   "resolutions": {
-    "bl": "4.0.0",
-    "handlebars": "4.7.2"
+    "bl": "4.0.1",
+    "handlebars": "4.7.3"
   },
   "keywords": [
     "data",
