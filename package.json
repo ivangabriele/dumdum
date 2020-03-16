@@ -47,8 +47,8 @@
     "yargs": "15.3.0"
   },
   "resolutions": {
-    "bl": ">=1.0.1",
-    "handlebars": ">=4.7.1"
+    "bl": "4.0.0",
+    "handlebars": "4.7.2"
   },
   "keywords": [
     "data",
