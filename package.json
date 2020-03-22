@@ -22,7 +22,7 @@
     "archiver": "3.1.1",
     "axios": "0.19.2",
     "copyfiles": "2.2.0",
-    "coveralls": "3.0.9",
+    "coveralls": "3.0.11",
     "download": "7.1.0",
     "jest": "25.1.0",
     "keep-a-changelog": "0.10.0",
@@ -32,7 +32,7 @@
     "proload": "1.0.0-beta.4",
     "ramda": "0.27.0",
     "rimraf": "3.0.2",
-    "rollup": "2.0.6",
+    "rollup": "2.1.0",
     "rollup-plugin-cleaner": "1.0.0",
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-json": "4.0.0",
@@ -47,7 +47,7 @@
     "yargs": "15.3.1"
   },
   "resolutions": {
-    "bl": "4.0.1",
+    "bl": "4.0.2",
     "handlebars": "4.7.3"
   },
   "keywords": [
