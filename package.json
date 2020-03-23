@@ -28,7 +28,7 @@
     "keep-a-changelog": "0.10.0",
     "make-dir": "3.0.2",
     "ora": "4.0.3",
-    "prettier": "1.19.1",
+    "prettier": "2.0.1",
     "proload": "1.0.0-beta.4",
     "ramda": "0.27.0",
     "rimraf": "3.0.2",
