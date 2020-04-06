@@ -23,7 +23,7 @@
     "axios": "0.19.2",
     "copyfiles": "2.2.0",
     "coveralls": "3.0.11",
-    "download": "7.1.0",
+    "download": "8.0.0",
     "jest": "25.2.7",
     "keep-a-changelog": "0.10.0",
     "make-dir": "3.0.2",
