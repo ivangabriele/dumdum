@@ -18,7 +18,7 @@
     "postversion": "git push origin HEAD && git push --tags"
   },
   "devDependencies": {
-    "@types/jest": "25.2.1",
+    "@types/jest": "25.2.2",
     "archiver": "4.0.1",
     "axios": "0.19.2",
     "copyfiles": "2.2.0",
@@ -32,18 +32,18 @@
     "proload": "1.0.0-beta.4",
     "ramda": "0.27.0",
     "rimraf": "3.0.2",
-    "rollup": "2.9.0",
+    "rollup": "2.10.2",
     "rollup-plugin-cleaner": "1.0.0",
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-json": "4.0.0",
     "rollup-plugin-node-resolve": "5.2.0",
-    "rollup-plugin-typescript2": "0.27.0",
+    "rollup-plugin-typescript2": "0.27.1",
     "rorre": "1.2.0",
     "ts-jest": "25.5.1",
     "tslint": "6.1.2",
     "tslint-config-airbnb": "5.11.2",
     "tslint-config-prettier": "1.18.0",
-    "typescript": "3.8.3",
+    "typescript": "3.9.2",
     "yargs": "15.3.1"
   },
   "resolutions": {
