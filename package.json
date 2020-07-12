@@ -18,8 +18,8 @@
     "postversion": "git push origin HEAD && git push --tags"
   },
   "devDependencies": {
-    "@types/jest": "26.0.3",
-    "archiver": "4.0.1",
+    "@types/jest": "26.0.4",
+    "archiver": "4.0.2",
     "axios": "0.19.2",
     "copyfiles": "2.3.0",
     "coveralls": "3.1.0",
@@ -32,7 +32,7 @@
     "proload": "1.0.0-beta.4",
     "ramda": "0.27.0",
     "rimraf": "3.0.2",
-    "rollup": "2.19.0",
+    "rollup": "2.21.0",
     "rollup-plugin-cleaner": "1.0.0",
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-json": "4.0.0",
@@ -44,7 +44,7 @@
     "tslint-config-airbnb": "5.11.2",
     "tslint-config-prettier": "1.18.0",
     "typescript": "3.9.6",
-    "yargs": "15.4.0"
+    "yargs": "15.4.1"
   },
   "resolutions": {
     "bl": "4.0.2",
