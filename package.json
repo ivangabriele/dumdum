@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@types/jest": "26.0.13",
-    "archiver": "5.0.0",
+    "archiver": "5.0.2",
     "axios": "0.20.0",
     "copyfiles": "2.3.0",
     "coveralls": "3.1.0",
@@ -32,7 +32,7 @@
     "proload": "1.0.0-beta.4",
     "ramda": "0.27.1",
     "rimraf": "3.0.2",
-    "rollup": "2.26.10",
+    "rollup": "2.26.11",
     "rollup-plugin-cleaner": "1.0.0",
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-json": "4.0.0",
