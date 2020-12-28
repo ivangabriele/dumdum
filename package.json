@@ -20,7 +20,7 @@
   "devDependencies": {
     "@types/jest": "26.0.19",
     "archiver": "5.1.0",
-    "axios": "0.21.0",
+    "axios": "0.21.1",
     "copyfiles": "2.4.1",
     "coveralls": "3.1.0",
     "download": "8.0.0",
