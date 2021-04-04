@@ -47,7 +47,7 @@
     "yargs": "16.2.0"
   },
   "resolutions": {
-    "bl": "4.1.0",
+    "bl": "5.0.0",
     "handlebars": "4.7.7"
   },
   "keywords": [
