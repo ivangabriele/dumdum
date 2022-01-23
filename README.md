@@ -1,9 +1,9 @@
 # dumdum
 
-[![License][img-license]][link-license]
-[![NPM Version][img-npm]][link-npm]
-[![Build Status][img-travis]][link-travis]
-[![Code Coverage][img-coveralls]][link-coveralls]
+[![License][img-license]][lnk-license]
+[![NPM Package][img-npm]][lnk-npm]
+[![Build Status][img-github]][lnk-github]
+[![Code Coverage][img-codecov]][lnk-codecov]
 
 Dummy data generator for local development, demos and testing purposes.
 
@@ -99,11 +99,11 @@ yarn data:generate [fr|en]...
 
 ---
 
-[img-coveralls]: https://img.shields.io/coveralls/github/ivangabriele/dumdum/master?style=flat-square
-[img-license]: https://img.shields.io/badge/License-MIT-blue?style=flat-square
+[img-codecov]: https://img.shields.io/codecov/c/github/ivangabriele/dumdum/main?style=flat-square
+[img-github]: https://img.shields.io/github/workflow/status/ivangabriele/dumdum/Check/main?style=flat-square
+[img-license]: https://img.shields.io/github/license/ivangabriele/dumdum?style=flat-square
 [img-npm]: https://img.shields.io/npm/v/dumdum?style=flat-square
-[img-travis]: https://img.shields.io/travis/com/ivangabriele/dumdum/master?style=flat-square
-[link-coveralls]: https://coveralls.io/github/ivangabriele/dumdum
-[link-license]: https://github.com/ivangabriele/dumdum/blob/master/LICENSE
-[link-npm]: https://www.npmjs.com/package/dumdum
-[link-travis]: https://travis-ci.com/ivangabriele/dumdum
+[lnk-codecov]: https://codecov.io/gh/ivangabriele/dumdum/branch/main
+[lnk-github]: https://github.com/ivangabriele/dumdum/actions?query=branch%3Amain++
+[lnk-license]: https://github.com/ivangabriele/dumdum/blob/master/LICENSE
+[lnk-npm]: https://www.npmjs.com/package/dumdum
