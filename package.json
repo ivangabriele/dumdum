@@ -21,11 +21,11 @@
     "jest": "27.5.1",
     "make-dir": "3.1.0",
     "ora": "6.1.0",
-    "prettier": "2.5.1",
+    "prettier": "2.6.0",
     "proload": "1.0.0-beta.4",
     "ramda": "0.28.0",
     "rimraf": "3.0.2",
-    "rollup": "2.70.0",
+    "rollup": "2.70.1",
     "rollup-plugin-cleaner": "1.0.0",
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-json": "4.0.0",
@@ -37,7 +37,7 @@
     "tslint-config-airbnb": "5.11.2",
     "tslint-config-prettier": "1.18.0",
     "typescript": "4.6.2",
-    "yargs": "17.3.1"
+    "yargs": "17.4.0"
   },
   "resolutions": {
     "bl": "5.0.0",
